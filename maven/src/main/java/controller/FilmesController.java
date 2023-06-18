@@ -1,55 +1,55 @@
 package controller;
-import model.Cliente;
+import model.Filmes;
 
 import java.util.List;
 
-import dal.ClienteDao;
+import dal.FilmesDao;
 
-public class ClientController {
-    public static List<Cliente> listarClientes(){
+public class FilmesController {
+    public static List<Filmes> listarFilme(){
         try {
-            return ClienteDao.listar();
+            return FilmesDao.listar();
         } catch (Exception e) {
             System.out.println(e);
             return null;
         }
     }
-    public static List<Cliente> buscarPessoaPorNome(String nome) {
+    public static List<Filmes> buscarFilmePorNome(String nome) {
         try {
-            return ClienteDao.buscarPessoaPorNome(nome);   
+            return FilmesDao.buscarFilmePorNome(nome);   
         } catch (Exception e) {
             System.out.println("Erro ao buscar o cadastro");
             return null;
         } 
     }
-    public static Cliente buscarClientePorId(int id) {
+    public static Filmes buscarFilmePorId(int id) {
         try {
-            return ClienteDao.buscarCliente(id);      
+            return FilmesDao.buscarFilme(id);      
         } catch (Exception e) {
             System.out.println("Erro ao buscar o cadastro");
             return null;
         }
     }
-    public static void salvar(Cliente c){
+    public static void salvar(Filmes c){
         try {
-            ClienteDao.postClient(c);
+            FilmesDao.postFilme(c);
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-    public static void alterarCliente(Cliente cliente) {
+    public static void alterarFilme(Filmes filme) {
         try {
-            if(ClienteDao.buscarCliente(cliente.getId()) != null){
-                ClienteDao.alterarCliente(cliente);
+            if(FilmesDao.buscarFilme(filme.getId()) != null){
+                FilmesDao.alterarFilme(filme);
             }
         } catch (Exception e) {
             System.out.println("Erro ao alterar o cadastro");
         }
     }
-    public static void deletarCliente(int id) {
+    public static void deletarFilme(int id) {
         try {
-            if(ClienteDao.buscarCliente(id) != null){
-                ClienteDao.deletaCliente(ClienteDao.buscarCliente(id));
+            if(FilmesDao.buscarFilme(id) != null){
+                FilmesDao.deletaFilme(FilmesDao.buscarFilme(id));
             }
         } catch (Exception e) {
             System.out.println("Erro ao deletar o cadastro");
