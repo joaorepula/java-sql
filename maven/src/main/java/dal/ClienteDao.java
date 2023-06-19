@@ -34,6 +34,27 @@ public static List<Cliente> listar(){
     }
     return null;
 }
+public static Cliente listarClienteId(int id){
+    try {
+        em.getTransaction().begin();
+        Query sql = em.createQuery("SELECT c FROM Cliente c");
+        List<Cliente> clientes = sql.getResultList();
+        em.getTransaction().commit();
+        System.out.println(clientes);
+
+        for (Cliente cliente : clientes) {
+            if(cliente.getId() == id){
+                return cliente;
+            }
+        }
+    System.out.println(clientes);
+    return null;
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        em.getTransaction().rollback();
+        return null;
+    }
+}
     public static List<Cliente> buscarPessoaPorNome(String nome) {
         try {
             em.getTransaction().begin();

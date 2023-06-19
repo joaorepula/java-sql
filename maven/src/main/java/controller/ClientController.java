@@ -14,6 +14,7 @@ public class ClientController {
             return null;
         }
     }
+    
     public static List<Cliente> buscarPessoaPorNome(String nome) {
         try {
             return ClienteDao.buscarPessoaPorNome(nome);   
@@ -30,6 +31,14 @@ public class ClientController {
             return null;
         }
     }
+    public static Cliente listarClienteId(int id){
+        try {
+            return ClienteDao.listarClienteId(id);      
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar o cadastro");
+            return null;
+        }
+}
     public static void salvar(Cliente c){
         try {
             ClienteDao.postClient(c);

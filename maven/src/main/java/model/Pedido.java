@@ -44,7 +44,6 @@ public class Pedido implements Serializable {
         this.filme = filme;
     }
 
-
     @Override
     public String toString() {
         return "Pedido [id=" + id + ", cliente=" + cliente + ", filme=" + filme + "]";

@@ -6,7 +6,6 @@ import dal.PedidosDao;
 import model.Pedido;
 
 
-//!TODO implementar Código para salvar os relacionamentos-
 public class PedidosController {
         public static List<Pedido> listarPedidos(){
         try {

@@ -1,84 +1,69 @@
 package dal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
-import model.Pedido;
 
+import model.Funcionario;
 
-public class PedidosDao implements Serializable {
+public class AtendenteDao implements Serializable {
     
  private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("db");
  private static EntityManager em = emf.createEntityManager();
 
-public static void postPedido(Pedido pedido){
+public static void postFuncionario(Funcionario c){
     try {
-        em.persist(pedido.getCliente());
         em.getTransaction().begin();
-        em.persist(pedido);
+        em.persist(c);
         em.getTransaction().commit();
     } catch (Exception e) {
         em.getTransaction().rollback();
-        e.printStackTrace(); 
     }
 }
 
-
-public static List<Pedido> listar(){
-    try {
-        em.getTransaction().begin();
-        Query sql = em.createQuery("SELECT p FROM pedido p");
-        List<Pedido> pedido = sql.getResultList();
-        em.getTransaction().commit();
-        return pedido;
-    } catch (Exception e) {
-        em.getTransaction().rollback();
-    }
-    return null;
-}
-    public static List<Pedido> buscarPedidoPorNome(String nome) {
+    public static List<Funcionario> buscarFuncionarioPorNome(String nome) {
         try {
             em.getTransaction().begin();
-            Query sql = em.createQuery("SELECT c FROM pedido c WHERE c.nome LIKE :nome");
+            Query sql = em.createQuery("SELECT c FROM Funcionario c WHERE c.nome LIKE :nome");
             sql.setParameter("nome", "%" + nome + "%");
-            List<Pedido> pedido = sql.getResultList();
+            List<Funcionario> pessoas = sql.getResultList();
             em.getTransaction().commit();    
-            return pedido;
+            return pessoas;
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
             em.getTransaction().rollback();
             return null;
         }
     }
-        public static void alterarPedido(Pedido pedido) {
+        public static void alterarFuncionario(Funcionario funcionario) {
         try{
             em.getTransaction().begin();
-            em.merge(pedido);
+            em.merge(funcionario);
             em.getTransaction().commit();     
         } catch (Exception e) {
             em.getTransaction().rollback();
         }
     }
-    public static Pedido buscarPedido(int id) {
+    public static Funcionario buscarFuncionario(int id) {
         try {
             em.getTransaction().begin();
-            Pedido pedido = em.find(Pedido.class, id);
+            Funcionario funcionario = em.find(Funcionario.class, id);
             em.getTransaction().commit();
-            return pedido; 
+            return funcionario; 
         } catch (Exception e) {
             em.getTransaction().rollback();
             return null;
         }
     }
-    public static void deletaPedido(Pedido pedido) {
+    public static void deletaFuncionario(Funcionario funcionario) {
         try {
             em.getTransaction().begin();
-            //Pega o objeto pessoa e gera uma instância do banco de dados do objeto
-            pedido = em.merge(pedido);
-            //Remove o objeto instanciado
-            em.remove(pedido);
+            funcionario = em.merge(funcionario);
+            em.remove(funcionario);
             em.getTransaction().commit();
         } catch (Exception e) {
             System.out.println(e.getMessage());

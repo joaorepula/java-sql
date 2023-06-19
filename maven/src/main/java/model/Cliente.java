@@ -4,7 +4,6 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Pessoa")
 public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +11,7 @@ public class Cliente implements Serializable {
     private String nome;
     private String email;
     
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Pedido> pedidos;
 
     public Cliente(String nome, String email) {
