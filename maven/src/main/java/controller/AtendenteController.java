@@ -7,14 +7,6 @@ import dal.AtendenteDao;
 
 public class AtendenteController {
 
-    public static List<Funcionario> buscarFuncionarioPorNome(String nome) {
-        try {
-            return AtendenteDao.buscarFuncionarioPorNome(nome);   
-        } catch (Exception e) {
-            System.out.println("Erro ao buscar o cadastro");
-            return null;
-        } 
-    }
     public static Funcionario buscarClientePorId(int id) {
         try {
             return AtendenteDao.buscarFuncionario(id);      

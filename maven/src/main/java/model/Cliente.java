@@ -11,7 +11,7 @@ public class Cliente implements Serializable {
     private String nome;
     private String email;
     
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE)
     private List<Pedido> pedidos;
 
     public Cliente(String nome, String email) {

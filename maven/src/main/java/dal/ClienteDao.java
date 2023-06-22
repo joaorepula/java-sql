@@ -40,7 +40,6 @@ public static Cliente listarClienteId(int id){
         Query sql = em.createQuery("SELECT c FROM Cliente c");
         List<Cliente> clientes = sql.getResultList();
         em.getTransaction().commit();
-        System.out.println(clientes);
 
         for (Cliente cliente : clientes) {
             if(cliente.getId() == id){

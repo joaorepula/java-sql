@@ -13,20 +13,62 @@ import model.Funcionario;
 public class App {
     public static void main( String[] args ){
         System.out.println("Hello world");
-        Cliente cliente = new Cliente("NOvo vcliente","tahron");
+
+
+        //******************************* Cliente **************************************************************/
+        Cliente cliente = new Cliente("NOvo Clientote","Clientote");
         ClientController controller = new ClientController();
-        Filmes filmes2 = new Filmes("Novo filme", "Ficção", 50);
-        FilmesController controllerFilme = new FilmesController();
+        ClientController.salvar(cliente);
+        // System.out.println(cliente.getId());
+        // ClientController.alterarCliente(cliente);
 
-        Pedido pedido = new Pedido(cliente, filmes2);
-        PedidosController pedidosController = new PedidosController();
-        ClientController.deletarCliente(14);
-        FilmesController.salvar(filmes2);
-        PedidosController.salvar(pedido);
+        // System.out.println(ClientController.buscarPessoaPorNome("NOvo"));
+        // System.out.println(ClientController.buscarClientePorId(cliente.getId()));
+        // System.out.println(ClientController.listarClientes());
+        // System.out.println(ClientController.listarClienteId(cliente.getId()));
+        // ClientController.deletarCliente(cliente.getId());
+        //*****************************************************************************************************************/
 
+        //******************************* Atendente **************************************************************/
         // Atendente atende = new Atendente("Joao", 1500, 15);
         // AtendenteController.salvar(atende);
-        System.out.println(ClientController.listarClienteId(1));
+        // AtendenteController.alterarFuncionario(atende);
+        // System.out.println(AtendenteController.buscarClientePorId(atende.getId()));
+        // AtendenteController.deletarCliente(atende.getId());
+
+        //*****************************************************************************************************************/
+
+        //******************************* Filmes **************************************************************/
+        Filmes filmes2 = new Filmes("Novo filme", "Ficção", 50);
+        FilmesController controllerFilme = new FilmesController();
+        FilmesController.salvar(filmes2);
+        // System.out.println(FilmesController.buscarFilmePorId(filmes2.getId()));
+        // System.out.println(FilmesController.listarFilme());
+        FilmesController.alterarFilme(filmes2);
+        // FilmesController.deletarFilme(filmes2.getId());
+
+        // //*****************************************************************************************************************/
+
+        // //******************************* Pedido **************************************************************/
+
+        Pedido pedido = new Pedido(cliente, filmes2);
+        System.out.println(filmes2.getId());
+        PedidosController pedidosController = new PedidosController();
+        
+        PedidosController.salvar(pedido);
+        PedidosController.alterarPedido(pedido);
+        // System.out.println(PedidosController.buscarPedidoPorId(pedido.getId()));
+        System.out.println(PedidosController.listarPedidos());
+        PedidosController.deletarPedido(pedido.getId());
+
+        //*****************************************************************************************************************/
+
+
+ 
+
+
+
+
     }
 }
 

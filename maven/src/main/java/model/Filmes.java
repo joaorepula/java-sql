@@ -13,7 +13,7 @@ public class Filmes implements Serializable {
     private String genero;
     private int estoque;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE)
     private List<Pedido> pedidos;
 
     public Filmes(String nome, String genero, int estoque) {

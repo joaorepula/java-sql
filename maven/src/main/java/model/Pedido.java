@@ -9,12 +9,10 @@ public class Pedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
+    @ManyToOne(cascade = CascadeType.MERGE )
     private Cliente cliente;
 
-    @ManyToOne
-    @JoinColumn(name = "filme_id")
+    @ManyToOne(cascade = CascadeType.MERGE )
     private Filmes filme;
 
     public Pedido(Cliente cliente, Filmes filme) {

@@ -6,8 +6,6 @@ import javax.persistence.*;
 public class Atendente extends Funcionario {
     private int horasTrabalhadas;
 
-    
-
     public Atendente(String nome, double salario, int horasTrabalhadas) {
         super(nome, salario);
         this.horasTrabalhadas = horasTrabalhadas;

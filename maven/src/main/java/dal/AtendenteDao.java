@@ -24,21 +24,6 @@ public static void postFuncionario(Funcionario c){
     }
 }
 
-    public static List<Funcionario> buscarFuncionarioPorNome(String nome) {
-        try {
-            em.getTransaction().begin();
-            Query sql = em.createQuery("SELECT c FROM Funcionario c WHERE c.nome LIKE :nome");
-            sql.setParameter("nome", "%" + nome + "%");
-            List<Funcionario> pessoas = sql.getResultList();
-            em.getTransaction().commit();    
-            return pessoas;
-            
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            em.getTransaction().rollback();
-            return null;
-        }
-    }
         public static void alterarFuncionario(Funcionario funcionario) {
         try{
             em.getTransaction().begin();

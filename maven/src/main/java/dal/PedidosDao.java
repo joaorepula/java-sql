@@ -15,11 +15,11 @@ public class PedidosDao implements Serializable {
 
 public static void postPedido(Pedido pedido){
     try {
-        em.persist(pedido.getCliente());
         em.getTransaction().begin();
         em.persist(pedido);
         em.getTransaction().commit();
     } catch (Exception e) {
+        System.out.println(e.getMessage());
         em.getTransaction().rollback();
         e.printStackTrace(); 
     }
